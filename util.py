@@ -102,45 +102,47 @@ def printSizesList(N):
     printSizes(N, 'list')
         
         
-def computeRange(n, N):
+def compute_for_range(n, N):
     
     if n < 1:
         print("Low range should be at least 1 ({n} given )")
         return
     
-    if N - n > 1:
-        print(f"\nComputing from {n = } to {N = }:\n")
+    if N - n > 2:
+        print(f"\nComputing from {n} to {N-1}:\n")
     else:
-        print(f"\nComputing for {N = }:\n")
+        print(f"\nComputing for {N-1}:\n")
     
     start_time = time.time()
     
-    for i in range(n, N+1):
-        ts = time.time()
-        lkp = pow_lookup_table(i)
-        solutions = []
-        for s in gen_seq_str(i):
-            val = str2val(lkp, s)
-            sval =  val2str(val)
-            if s == sval:
-                solutions.append(str(val))
-                
-        dt = time.time() - ts
-        if len(solutions) > 0:
-            print(f"n = {i},\t{dt:.1f} sec ---> {', '.join(solutions)}")
-        else:
-            print(f"n = {i},\t{dt:.1f} sec ... ") 
+    for i in range(n, N):
+        compute_one(i)
         
     time_taken = (time.time() - start_time)
     print(f"\n{time_taken = :.1f} seconds")
 
     
 def compute_one(N):
-    computeRange(N, N+1)
+
+    print(f"\nComputing for {N = }:\n")
+    ts = time.time()
+    lkp = pow_lookup_table(N)
+    solutions = []
+    for s in gen_seq_str(N):
+        val = str2val(lkp, s)
+        sval =  val2str(val)
+        if s == sval:
+            solutions.append(str(val))
+
+    dt = time.time() - ts
+    if len(solutions) > 0:
+        print(f"n = {N},\t{dt:.1f} sec ---> {', '.join(solutions)}")
+    else:
+        print(f"n = {N},\t{dt:.1f} sec ... ") 
 
     
 def compute(N=10):
-    computeRange(1, N)
+    compute_for_range(1, N+1)
 
 
 if __name__ == '__main__':
