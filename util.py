@@ -1,6 +1,8 @@
 from collections import Counter
 import time
+import datetime
 
+import numpy as np
 import multiprocessing as mp
 from multiprocessing import Process
 
@@ -138,7 +140,8 @@ def compute_for_range(n, N):
         compute_one(i)
         
     time_taken = (time.time() - start_time)
-    print(f"\n{time_taken = :.1f} seconds")
+    time_formatted = str(datetime.timedelta(seconds=round(time_taken)))
+    print(f"\n{time_formatted = }")
 
     
 def compute_one(N):
@@ -149,25 +152,22 @@ def compute_one(N):
     solutions = []
     count = 0
     mx_count = computeSizeCombinatorics(N)
-    print_step = round(mx_count/10)
+    print_step = np.floor(mx_count/10)
     for s in gen_seq_str(N):
         val = str2val(lkp, s)
         sval =  val2str(val)
         if s == sval:
             solutions.append(str(val))
         count+=1
-        if N > 20 and count % print_step == 0:
+        if N > 10 and count % print_step == 0:
             print(f"{N}: {round(count/print_step)*10}% done")
 
-
-    if N > 20:
-        print(f"{N}: 100% done")
-
     dt = time.time() - ts
+    time_formatted = str(datetime.timedelta(seconds=round(dt)))
     if len(solutions) > 0:
-        print(f"n = {N},\t{dt:.1f} sec ---> {', '.join(solutions)}")
+        print(f"n = {N},\t{time_formatted} ---> {', '.join(solutions)}")
     else:
-        print(f"n = {N},\t{dt:.1f} sec ... ") 
+        print(f"n = {N},\t{time_formatted} ... ") 
 
     
 def compute(N=10):

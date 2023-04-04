@@ -1,3 +1,8 @@
 #!/bin/bash
 
-python3 run10.py >> 10.log 2>&1 &
+val=10
+logfile=${val}.log
+
+rm $logfile > /dev/null 2>&1 
+
+python3 run10.py >> $logfile 2>&1 &
