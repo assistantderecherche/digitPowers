@@ -96,6 +96,25 @@ def printSizes(N, mode='gen'):
     
     print(f"\nSizes:\n")
     print(', '.join([str(s) for s in sizes]))
+
+    return sizes
+
+def computeSizeCombinatorics(n):
+    
+    sz = 1
+    for i in range(1,10):
+        sz *= (n/i+1)
+
+    return round(sz)
+
+
+def computeSizesCombinatorics(N):
+    
+    szs = []
+    for n in range(2, N+1):
+        szs.append(computeSizeCombinatorics(n))
+
+    return szs
         
               
 def printSizesList(N):
