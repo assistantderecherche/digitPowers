@@ -152,15 +152,25 @@ def compute_one(N):
     solutions = []
     count = 0
     mx_count = computeSizeCombinatorics(N)
-    print_step = np.floor(mx_count/10)
+
+    if N > 20:
+        print_step = np.floor(mx_count/100)
+    else:
+        print_step = np.floor(mx_count/10)
+
     for s in gen_seq_str(N):
         val = str2val(lkp, s)
         sval =  val2str(val)
         if s == sval:
             solutions.append(str(val))
+
         count+=1
-        if N > 10 and count % print_step == 0:
-            print(f"{N}: {round(count/print_step)*10}% done")
+        if N > 10 and N < 30:
+            if count % print_step == 0:
+                print(f"{N}: {round(count/print_step)}0% done, found {len(solutions)} solutions")
+        elif N >= 30:
+            if count % print_step == 0:
+                print(f"{N}: {round(count/print_step)}% done, found {len(solutions)} solutions")
 
     dt = time.time() - ts
     time_formatted = str(datetime.timedelta(seconds=round(dt)))
