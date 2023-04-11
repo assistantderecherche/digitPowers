@@ -1,7 +1,7 @@
 #!/bin/bash
 
-low=56
-high=60
+low=31
+high=40
 
 logfile=${low}-${high}.log
 
