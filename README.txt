@@ -23,5 +23,5 @@ Therefore the "changce" of such sequence giving an actual solution behaves as
 
 which behaves as n^10/10^n and therefore rapidly approaches 0.
 
-This  might serve as an explanation, why we didn't find any solutions past n =
+This  might serve as an explanation, why we didn't find any solutions past n = 39
 
