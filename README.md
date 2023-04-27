@@ -1,19 +1,19 @@
-PROBLEM:
+### PROBLEM:
 
-Find numbers 'X' such that if X has 'n' digits, then 
+Find numbers **X** such that if **X** has **n** digits, then 
 
 		sum_{digit d} d^n == X
 
-DONE:
+### DONE:
 
 Experimentally checked n up to 60. The solutions can be found in report.txt
 
-ANALYSIS:
+### ANALYSIS:
 
-For given n (number of digits), number of possible solutions (denoted here PS(n))
+For given **n** (number of digits), number of possible solutions (denoted here **PS(n)**)
 doesn't exceed the number of orderered sequences of 0-9 digits of length n.
 
-This gives an upper bound estimate for as:
+This gives an upper bound estimate for PS(n) as:
 
 		PS(n) = (n+9, 9) reads as (n+9 choose 9)
 
@@ -23,6 +23,6 @@ Therefore "chances" of such sequence giving an actual solution behave as:
 
 which behaves as n^10/10^n and therefore rapidly approaches 0 as n grows.
 
-This might serve as an explanation, why we didn't find any solutions past n = 39
+This might serve as an explanation, why **we didn't find any solutions past n = 39**
 
-Also, note that the number of variants the program considers grows as n^10, which is ultimately much better than 10^n.
+Also, note that the number of variants the program considers grows as n^10, which is ultimately much better than the straightforward 10^n.
