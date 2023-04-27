@@ -3,10 +3,9 @@
 Find numbers **X** such that if **X** has **n** digits, then 
 
 		sum_{digit d} d^n == X
-
 ### DONE:
 
-Experimentally checked n up to 60. The solutions can be found in report.txt
+Experimentally checked n up to 60. The solutions can be found in **report.txt**
 
 ### ANALYSIS:
 
@@ -26,3 +25,11 @@ which behaves as n^10/10^n and therefore rapidly approaches 0 as n grows.
 This might serve as an explanation, why **we didn't find any solutions past n = 39**
 
 Also, note that the number of variants the program considers grows as n^10, which is ultimately much better than the straightforward 10^n.
+
+### RUNNING
+
+Sample run can be done by **./run1-10.sh** (and other similar scripts), which will compute solutions for the first 10 digits and put the results into **./1-10.log**. 
+
+In order to view the results of all runs use **./report.sh**, which will update **report.txt** (all the results) and show it on the screen.
+
+You can also use **./observe.sh** to monitor the status of a longer run
